@@ -2,14 +2,15 @@
 import math as m
 import sys
 
-WANT=(int)(sys.argv[1])
+WANT=(float)(sys.argv[1])
+NAME=sys.argv[2]
 
 first=round(m.log(WANT,2))
 error=1./WANT - 1./(2**first)
 terms=[first]
 
 print("template <typename T>")
-print("static inline T div_%s(const T& val) {" % WANT)
+print("static inline T %s(const T& val) {" % NAME)
 print("  return (val >> %s)" % first, end='')
 
 while m.fabs(error) > 1./(1<<32):
