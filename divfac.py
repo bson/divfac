@@ -11,7 +11,10 @@ terms=[first]
 
 print("template <typename T>")
 print("static inline T %s(const T& val) {" % NAME)
-print("  return (val >> %s)" % first, end='')
+if first == 0:
+  print("  return val", end='')
+else:
+  print("  return (val >> %s)" % first, end='')
 
 while m.fabs(error) > 1./(1<<32):
   sign = m.copysign(1, error)
